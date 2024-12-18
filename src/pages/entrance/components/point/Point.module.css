@@ -1,0 +1,17 @@
+.base_point {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    border: 1px solid salmon;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.point__value {
+}
+.point__time {
+}

@@ -1,0 +1,44 @@
+.wrapper__entrance-page {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 1.6rem;
+}
+.game-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.6rem;
+    padding: 4px 12px;
+    margin: 0;
+}
+.menu__item {
+    display: flex;
+    position: relative;
+    gap: 20px;
+}
+.menu__item label,
+.menu__item input {
+    font-size: 0.64rem;
+}
+.menu__item input {
+    padding: 0 4px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.menu__item input.input-error {
+    border: 1px solid red;
+}
+.menu__item .error {
+    position: absolute;
+    top: 100%;
+    left: 28%;
+    width: max-content;
+}
+.gaming-area {
+    position: relative;
+    flex: 1;
+    margin: 20px 0;
+    width: 90%;
+    border: 1px solid black;
+}

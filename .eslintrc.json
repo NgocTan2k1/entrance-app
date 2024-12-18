@@ -1,0 +1,216 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "prettier", "react", "react-hooks"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "ignorePatterns": ["node_modules/*"],
+    "rules": {
+        // typescript
+        "@typescript-eslint/no-inferrable-types": "off",
+        // "@typescript-eslint/explicit-function-return-type": "warn", // Cảnh báo nếu không có kiểu trả về cho hàm
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }], // Bắt lỗi biến không sử dụng
+        "@typescript-eslint/explicit-module-boundary-types": "off", // Bắt lỗi nếu không chỉ định kiểu cho biến
+        // define type for variable
+        "@typescript-eslint/typedef": [
+            "error",
+            {
+                "variableDeclaration": false,
+                "variableDeclarationIgnoreFunction": false
+            }
+        ],
+        // prettier
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
+        // "prefer-arrow-callback": "error",
+        // "no-console": ["warn", { "allow": ["tron"] }],
+        // "no-inline-comments": "error",
+        // "spaced-comment": ["error", "always", { "markers": ["/"] }],
+        // "class-methods-use-this": "error",
+        // "eol-last": "error",
+        // "max-len": [
+        //     "error",
+        //     {
+        //         "code": 130,
+        //         "tabWidth": 4,
+        //         "ignoreUrls": true,
+        //         "ignoreComments": false,
+        //         "ignoreStrings": false,
+        //         "ignoreTemplateLiterals": false,
+        //         "ignoreRegExpLiterals": false
+        //     }
+        // ],
+        // "semi": ["error", "always"],
+        // "indent": ["error", 4, { "SwitchCase": 1 }],
+        // "quotes": ["error", "single", { "avoidEscape": true }]
+    }
+}
+
+// eslint-disable-next-line no-undef
+// module.exports = {
+//     root: true,
+//     env: {
+//         browser: true,
+//         es2021: true,
+//         jest: true,
+//     },
+//     extends: [
+//         'eslint:recommended',
+//         'plugin:react/recommended',
+//         'plugin:@typescript-eslint/eslint-recommended',
+//         'plugin:@typescript-eslint/recommended',
+//         'plugin:react-hooks/recommended',
+//         'plugin:prettier/recommended',
+//     ],
+//     parser: '@typescript-eslint/parser',
+//     parserOptions: {
+//         ecmaFeatures: {
+//             jsx: true,
+//         },
+//         ecmaVersion: 13,
+//         sourceType: 'module',
+//     },
+//     plugins: ['react', 'react-hooks', '@typescript-eslint', 'node'],
+//     settings: {
+//         react: {
+//             version: 'detect',
+//         },
+//     },
+//     globals: {
+//         Atomics: 'readonly',
+//         SharedArrayBuffer: 'readonly',
+//     },
+//     rules: {
+//         'no-sparse-arrays': 'error',
+//         'no-invalid-regexp': 'error',
+//         'no-inner-declarations': 'error',
+//         'no-func-assign': 'error',
+//         'no-extra-semi': 'error',
+//         'no-extra-boolean-cast': 'error',
+//         'no-ex-assign': 'error',
+//         'no-empty': 'error',
+//         'no-empty-character-class': 'error',
+//         'no-duplicate-case': 'error',
+//         'no-dupe-keys': 'error',
+//         'no-dupe-args': 'error',
+//         'no-control-regex': 'error',
+//         'no-constant-condition': 'error',
+//         'no-cond-assign': 'error',
+//         'no-unused-vars': 'off',
+//         'no-useless-concat': 'error',
+//         'no-use-before-define': 'off',
+//         'no-mixed-operators': 'error',
+//         'default-case': 'error',
+//         'consistent-return': 'error',
+//         'react/react-in-jsx-scope': 'off',
+//         'react/prop-types': 'error',
+//         'react-hooks/rules-of-hooks': 'error',
+//         'react-hooks/exhaustive-deps': 'error',
+//         'node/exports-style': 'error',
+//         'node/no-deprecated-api': 'error',
+//         // 'node/no-missing-import': 'error',
+//         'node/no-missing-require': 'error',
+//         'node/no-unpublished-bin': 'error',
+//         // 'node/no-unpublished-import': 'error',
+//         'node/no-unpublished-require': 'error',
+//         // 'node/no-unsupported-features': 'error',
+//         'node/process-exit-as-throw': 'error',
+//         'node/shebang': 'error',
+//         eqeqeq: 'warn',
+//         // 'linebreak-style': ['error', 'unix'],
+//         'for-direction': 'error',
+//         'no-unmodified-loop-condition': 'error',
+//         'no-unreachable': 'error',
+//         'no-redeclare': 'error',
+//         'no-new': 'error',
+//         'no-this-before-super': 'error',
+//         'no-await-in-loop': 'error',
+//         'no-floating-decimal': 'error',
+//         'no-class-assign': 'error',
+//         'no-const-assign': 'error',
+//         'use-isnan': 'error',
+//         'no-useless-rename': 'error',
+//         'no-duplicate-imports': 'error',
+//         'no-array-constructor': 'error',
+//         'no-useless-escape': 'error',
+//         'valid-typeof': 'error',
+//         'max-depth': [2, 4],
+//         'array-callback-return': 'error',
+//         'arrow-body-style': 'off',
+//         'no-var': 'error',
+//         'prefer-const': 'error',
+//         'no-else-return': 'error',
+//         'no-caller': 'error',
+//         'consistent-this': 'error',
+//         'no-invalid-this': 'error',
+//         'no-loop-func': 'error',
+//         'no-multi-assign': 'error',
+//         'no-multi-str': 'error',
+//         'no-proto': 'error',
+//         'no-prototype-builtins': 'error',
+//         'no-global-assign': 'error',
+//         'no-implicit-coercion': 'error',
+//         'no-loss-of-precision': 'error',
+//         'no-misleading-character-class': 'error',
+//         'no-negated-condition': 'error',
+//         'no-restricted-properties': 'error',
+//         complexity: ['error', 40],
+//         'block-scoped-var': 'error',
+//         'constructor-super': 'error',
+//         'default-case-last': 'error',
+//         'func-names': 'error',
+//         'id-denylist': 'error',
+//         'guard-for-in': 'error',
+//         'init-declarations': ['error', 'always'],
+//         'lines-between-class-members': ['error', 'always'],
+//         'max-classes-per-file': ['error', 2],
+//         'no-shadow': 'off',
+//         'no-compare-neg-zero': 'error',
+//         'max-statements-per-line': ['error', { max: 2 }],
+//         'react/void-dom-elements-no-children': 'error',
+//         'react/button-has-type': 'error',
+//         'react/jsx-no-bind': 'error',
+//         'react/self-closing-comp': 'error',
+//         '@typescript-eslint/explicit-function-return-type': 'error',
+//         '@typescript-eslint/no-empty-function': 'error',
+//         '@typescript-eslint/no-empty-interface': 'error',
+//         '@typescript-eslint/no-explicit-any': 'error',
+//         '@typescript-eslint/no-non-null-assertion': 'error',
+//         '@typescript-eslint/no-use-before-define': 'error',
+//         '@typescript-eslint/no-unused-vars': ['error', { args: 'none', argsIgnorePattern: '^_' }],
+//         '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
+//         'prettier/prettier': 'error',
+//         'prefer-arrow-callback': 'error',
+//         'no-console': ['warn', { allow: ['tron'] }],
+//         'no-inline-comments': 'error',
+//         'spaced-comment': ['error', 'always', { markers: ['/'] }],
+//         'class-methods-use-this': 'error',
+//         'eol-last': 'error',
+//         'max-len': ['error', { code: 120, tabWidth: 4 }],
+//         semi: ['error', 'always'],
+//         indent: ['error', 4, { SwitchCase: 1 }],
+//         quotes: ['error', 'single', { avoidEscape: true }],
+//         'react/display-name': 'warn',
+//     },
+// };

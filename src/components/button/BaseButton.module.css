@@ -1,0 +1,10 @@
+.base_button {
+    font-size: 0.62rem;
+    padding: 4px 12px;
+    background-color: rgb(204, 204, 204);
+    border: 1px solid;
+}
+.base_button:hover {
+    cursor: pointer;
+    background-color: rgb(204, 204, 204, 0.75);
+}
