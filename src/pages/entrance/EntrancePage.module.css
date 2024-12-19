@@ -17,6 +17,9 @@
     position: relative;
     gap: 20px;
 }
+.menu__item h2 {
+    font-weight: 700;
+}
 .menu__item label,
 .menu__item input {
     font-size: 0.64rem;

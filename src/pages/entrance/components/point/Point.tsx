@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 // The components
 
@@ -9,38 +9,46 @@ import { useHandleBindingClass } from '../../../../hooks/useHandleBindingClass';
 import styles from './Point.module.css';
 
 export interface IPoint {
-    value: string;
+    sizePoint: number;
+    value: number;
+    zIndex: number;
     position: {
         x: number;
         y: number;
     };
     tailwindCSS?: string;
+    parent?: Element | null;
 }
 
-const Point: React.FC<IPoint> = ({ value, position }) => {
+const Point: React.FC<IPoint> = ({ sizePoint, value, zIndex, position }) => {
     const cx = useHandleBindingClass(styles);
 
     // state
     const [seconds, setSeconds] = useState<number>(30.0);
-    const [timeIntervalId, setTimeIntervalId] = useState<NodeJS.Timeout>();
+    const [timeIntervalId, setTimeIntervalId] = useState<NodeJS.Timeout | undefined>(undefined);
+    const [isActive, setIsActive] = useState<boolean>(false);
 
     useEffect(() => {
+        console.log('===== Mouted Point.tsx =====');
         return () => {
             clearInterval(timeIntervalId);
-        }; // Dọn dẹp interval khi component unmount
+            console.log('===== Unmouted Point.tsx component =====');
+        };
     }, []);
 
     useEffect(() => {
         if (seconds == 0) {
             clearInterval(timeIntervalId);
-
-            // handle remove DOM
-            return;
+            setTimeIntervalId(undefined);
+            // const pointElement = document.querySelector('.' + cx(`point_${value}`));
+            // if (pointElement) parent?.removeChild(pointElement);
+            // return;
         }
     }, [seconds]);
 
     // functions
-    const handleClickPoint = () => {
+    const handleClickPoint = useCallback(() => {
+        setIsActive(true);
         if (seconds !== 0) {
             setTimeIntervalId(
                 setInterval(() => {
@@ -48,16 +56,20 @@ const Point: React.FC<IPoint> = ({ value, position }) => {
                 }, 100),
             );
         }
-    };
+    }, []);
 
     return (
         <div
-            className={cx(value, 'base_point')}
-            style={{ top: `${position.y}%`, right: `${position.x}%` }}
+            className={cx(`base_point`, `point_${value}`, isActive && 'active', `w-[${sizePoint}px] h-[${sizePoint}px]`)}
+            style={{ top: `${position.y}px`, left: `${position.x}px`, zIndex: zIndex }}
             onClick={handleClickPoint}
         >
             <p className={cx('point__value')}>{value}</p>
-            <p className={cx('point__time')}>{seconds !== 30 && `${seconds / 10}${(seconds / 10) % 1 !== 0 ? 's' : '.0s'}`}</p>
+            {timeIntervalId && (
+                <p className={cx('point__time')}>
+                    {seconds !== 30 && `${seconds / 10}${(seconds / 10) % 1 !== 0 ? 's' : '.0s'}`}
+                </p>
+            )}
         </div>
     );
 };

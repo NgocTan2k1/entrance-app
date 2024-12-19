@@ -10,8 +10,30 @@
     border: 1px solid salmon;
     border-radius: 50%;
     overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+}
+.base_point.active {
+    background-color: salmon;
+    color: white;
+    z-index: 10;
+    animation: fadeOut 3s forwards;
 }
 .point__value {
 }
 .point__time {
+}
+
+@keyframes fadeOut {
+    0% {
+        background-color: rgb(250, 128, 114, 1);
+        border-color: rgb(250, 128, 114, 1);
+        z-index: 999;
+    }
+    100% {
+        background-color: rgb(250, 128, 114, 0);
+        border-color: rgb(250, 128, 114, 0);
+        z-index: 0;
+        opacity: 0;
+    }
 }
