@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+// routes
 import { privateRoutes, publicRoutes } from './routers/routes';
 
 function App() {
@@ -14,7 +15,6 @@ function App() {
 
     return (
         <div className="wrapper__app h-[100%] w-[100%]">
-            <div></div>
             <Routes>
                 {publicRoutes?.map((routes) => {
                     const router = routes.path.map((route, index) => {

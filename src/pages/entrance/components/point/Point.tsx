@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-// The components
-
 // The customized hooks
 import { useHandleBindingClass } from '../../../../hooks/useHandleBindingClass';
 
@@ -54,7 +52,6 @@ const Point: React.FC<IPoint> = ({ sizePoint, value, index, zIndex, position, on
         if (seconds == 0 || isFail) {
             clearInterval(timeIntervalId);
             const pointElement = document.querySelector('.' + cx(`point_${index}`)) as HTMLElement;
-            console.log(pointElement);
             if (pointElement) pointElement.style.zIndex = '0';
             setTimeIntervalId(undefined);
         }
