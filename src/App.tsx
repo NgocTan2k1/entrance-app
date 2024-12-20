@@ -6,9 +6,9 @@ import { privateRoutes, publicRoutes } from './routers/routes';
 function App() {
     const isLogged = false;
     useEffect(() => {
-        console.log('===== Mouted App.tsx =====');
+        // console.log('===== Mouted App.tsx =====');
         return () => {
-            console.log('===== Unmouted App.tsx component =====');
+            // console.log('===== Unmouted App.tsx component =====');
         };
     }, []);
 

@@ -37,10 +37,10 @@ const Point: React.FC<IPoint> = ({ sizePoint, value, index, zIndex, position, on
     const [opacity, setOpacity] = useState<number>(1);
 
     useEffect(() => {
-        console.log('===== Mouted Point.tsx =====');
+        // console.log('===== Mouted Point.tsx =====');
         return () => {
             clearInterval(timeIntervalId);
-            console.log('===== Unmouted Point.tsx component =====');
+            // console.log('===== Unmouted Point.tsx component =====');
         };
     }, []);
 
@@ -53,6 +53,9 @@ const Point: React.FC<IPoint> = ({ sizePoint, value, index, zIndex, position, on
     useEffect(() => {
         if (seconds == 0 || isFail) {
             clearInterval(timeIntervalId);
+            const pointElement = document.querySelector('.' + cx(`point_${index}`)) as HTMLElement;
+            console.log(pointElement);
+            if (pointElement) pointElement.style.zIndex = '0';
             setTimeIntervalId(undefined);
         }
     }, [seconds, isFail]);

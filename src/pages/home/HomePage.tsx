@@ -14,12 +14,10 @@ const HomePage: React.FC<IHomePage> = () => {
     const cx = useHandleBindingClass(styles);
     const handleNavigation = useHandleNavigation();
 
-    console.log(styles);
-
     useEffect(() => {
-        console.log('===== Mouted HomePage.tsx =====');
+        // console.log('===== Mouted HomePage.tsx =====');
         return () => {
-            console.log('===== Unmouted HomePage.tsx component =====');
+            // console.log('===== Unmouted HomePage.tsx component =====');
         };
     }, []);
 

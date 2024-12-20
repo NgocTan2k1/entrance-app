@@ -49,14 +49,14 @@ const EntrancePage: React.FC<IEntrancePage> = () => {
     const gameAreaHeight = useRef<number>(0);
 
     useEffect(() => {
-        console.log('===== Mouted EntrancePage.tsx =====');
+        // console.log('===== Mouted EntrancePage.tsx =====');
         const gameAreaElement = document.querySelector('.' + cx('gaming-area'));
         gameArea.current = gameAreaElement;
         gameAreaWidth.current = gameAreaElement?.clientWidth || 0;
         gameAreaHeight.current = gameAreaElement?.clientHeight || 0;
 
         return () => {
-            console.log('===== Unmouted EntrancePage.tsx component =====');
+            // console.log('===== Unmouted EntrancePage.tsx component =====');
             if (timeoutDone.current) clearTimeout(timeoutDone.current);
             if (intervalTime.current) clearInterval(intervalTime.current);
             if (intervalAuto.current) clearTimeout(intervalAuto.current);
