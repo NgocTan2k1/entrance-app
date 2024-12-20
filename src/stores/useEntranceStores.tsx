@@ -9,6 +9,10 @@ export interface IEntranceStore {
     setIsFail: (isValue: boolean) => void;
     autoPlayTrigger: number;
     setAutoPlayTrigger: (value: number) => void;
+    areaWidth: number;
+    setAreaWidth: (width: number) => void;
+    areaHeight: number;
+    setAreaHeight: (height: number) => void;
 }
 
 const useEntranceStore = create<IEntranceStore>()((set) => ({
@@ -20,6 +24,10 @@ const useEntranceStore = create<IEntranceStore>()((set) => ({
     setIsFail: (isValue) => set(() => ({ isFail: isValue })),
     autoPlayTrigger: 0,
     setAutoPlayTrigger: (value) => set(() => ({ autoPlayTrigger: value })),
+    areaWidth: 0,
+    setAreaWidth: (width) => set(() => ({ areaWidth: width })),
+    areaHeight: 0,
+    setAreaHeight: (height) => set(() => ({ areaHeight: height })),
 }));
 
 export default useEntranceStore;

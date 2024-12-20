@@ -27,6 +27,8 @@ const EntrancePage: React.FC<IEntrancePage> = () => {
     const isFail = useEntranceStore((state) => state.isFail);
     const setIsFail = useEntranceStore((state) => state.setIsFail);
     const setAutoPlayTrigger = useEntranceStore((state) => state.setAutoPlayTrigger);
+    const setAreaWidth = useEntranceStore((state) => state.setAreaWidth);
+    const setAreaHeight = useEntranceStore((state) => state.setAreaHeight);
 
     // const
     const sizePoint = 48;
@@ -55,11 +57,20 @@ const EntrancePage: React.FC<IEntrancePage> = () => {
         gameAreaWidth.current = gameAreaElement?.clientWidth || 0;
         gameAreaHeight.current = gameAreaElement?.clientHeight || 0;
 
+        const handleResize = () => {
+            const gameAreaElement = document.querySelector('.' + cx('gaming-area'));
+            setAreaWidth(gameAreaElement?.clientWidth || 0);
+            setAreaHeight(gameAreaElement?.clientHeight || 0);
+        };
+
+        window.addEventListener('resize', handleResize);
+
         return () => {
             // console.log('===== Unmouted EntrancePage.tsx component =====');
             if (timeoutDone.current) clearTimeout(timeoutDone.current);
             if (intervalTime.current) clearInterval(intervalTime.current);
             if (intervalAuto.current) clearTimeout(intervalAuto.current);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
@@ -189,8 +200,8 @@ const EntrancePage: React.FC<IEntrancePage> = () => {
                 pointArray.push({
                     value: Math.random(),
                     position: {
-                        x: Math.random() * (gameAreaWidth.current - sizePoint),
-                        y: Math.random() * (gameAreaHeight.current - sizePoint),
+                        x: Math.random(),
+                        y: Math.random(),
                     },
                     zIndex: length - i,
                 });
@@ -260,6 +271,7 @@ const EntrancePage: React.FC<IEntrancePage> = () => {
                             zIndex={point.zIndex}
                             sizePoint={sizePoint}
                             onClickPoint={handleClickPoint}
+                            ratio={sizePoint}
                         />
                     ))}
             </div>

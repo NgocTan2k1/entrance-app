@@ -19,14 +19,17 @@ export interface IPoint {
     tailwindCSS?: string;
     parent?: Element | null;
     onClickPoint: (point: number) => void;
+    ratio: number;
 }
 
-const Point: React.FC<IPoint> = ({ sizePoint, value, index, zIndex, position, onClickPoint }) => {
+const Point: React.FC<IPoint> = ({ sizePoint, value, index, zIndex, position, onClickPoint, ratio }) => {
     const cx = useHandleBindingClass(styles);
 
     // stores
     const isFail = useEntranceStore((state) => state.isFail);
     const autoPlayTrigger = useEntranceStore((state) => state.autoPlayTrigger);
+    const areaWidth = useEntranceStore((state) => state.areaWidth);
+    const areaHeight = useEntranceStore((state) => state.areaHeight);
 
     // state
     const [seconds, setSeconds] = useState<number>(30.0);
@@ -79,8 +82,8 @@ const Point: React.FC<IPoint> = ({ sizePoint, value, index, zIndex, position, on
         <div
             className={cx(`base_point`, `point_${index}`, isActive && 'active', `w-[${sizePoint}px] h-[${sizePoint}px]`)}
             style={{
-                top: `${position.y}px`,
-                left: `${position.x}px`,
+                top: `${position.y > 1 - ratio / areaHeight ? (1 - ratio / areaHeight) * 100 : position.y * 100}%`,
+                left: `${position.x > 1 - ratio / areaWidth ? (1 - ratio / areaWidth) * 100 : position.x * 100}%`,
                 zIndex: zIndex,
                 opacity: opacity,
                 backgroundColor: isActive ? `rgb(250, 128, 114, ${opacity})` : '',
