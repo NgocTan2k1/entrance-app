@@ -51,8 +51,10 @@ const Point: React.FC<IPoint> = ({ sizePoint, value, index, zIndex, position, on
     useEffect(() => {
         if (seconds == 0 || isFail) {
             clearInterval(timeIntervalId);
-            const pointElement = document.querySelector('.' + cx(`point_${index}`)) as HTMLElement;
-            if (pointElement) pointElement.style.zIndex = '0';
+            if (seconds === 0) {
+                const pointElement = document.querySelector('.' + cx(`point_${index}`)) as HTMLElement;
+                if (pointElement) pointElement.style.zIndex = '0';
+            }
             setTimeIntervalId(undefined);
         }
     }, [seconds, isFail]);
